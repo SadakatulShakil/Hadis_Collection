@@ -57,8 +57,8 @@ class _HomeScreenState extends State<HomeScreen> {
                     right: 40,
                     child: Column(
                       children: [
-                        Text('Today 9-9-2023', style: TextStyle(color: Colors.white),),
-                        Text('Fazar start 04:50 AM', style: TextStyle(color: Colors.white)),
+                        Text('Today 9-9-2023', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600, fontSize: 17),),
+                        Text('Fazar start 04:50 AM', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600, fontSize: 17)),
                       ],
                     ),
                   ),
@@ -88,29 +88,33 @@ class _HomeScreenState extends State<HomeScreen> {
                         Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Image.asset('assets/images/icon.png', width: 45,height: 45,),
-                            Text('আয়াতুস শেফা', style: TextStyle(color: Colors.white))
+                            Image.asset('assets/images/sefa_icon.png', width: 35,height: 35,),
+                            SizedBox(height: 8,),
+                            Text('কালিমা', style: TextStyle(color: Colors.white))
                           ],
                         ),
                         Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Image.asset('assets/images/icon.png', width: 45,height: 45,),
-                            Text('৪০ রাব্বানা', style: TextStyle(color: Colors.white))
+                            Image.asset('assets/images/dua_icon.png', width: 40,height: 40,),
+                            SizedBox(height: 8,),
+                            Text('দোয়া', style: TextStyle(color: Colors.white))
                           ],
                         ),
                         Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Image.asset('assets/images/icon.png', width: 45,height: 45,),
-                            Text('সালাত', style: TextStyle(color: Colors.white))
+                            Image.asset('assets/images/biography_icon.png', width: 40,height: 40,),
+                            SizedBox(height: 8,),
+                            Text('জীবনী', style: TextStyle(color: Colors.white))
                           ],
                         ),
                         Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Image.asset('assets/images/icon.png', width: 45,height: 45,),
-                            Text('সালাত', style: TextStyle(color: Colors.white),)
+                            Image.asset('assets/images/qibla_icon.png', width: 40,height: 40,),
+                            SizedBox(height: 8,),
+                            Text('কিবলা', style: TextStyle(color: Colors.white),)
                           ],
                         )
                       ],

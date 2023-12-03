@@ -30,12 +30,21 @@ class ChapterView extends StatelessWidget {
             width: 45,
             height: 45,
             decoration: BoxDecoration(
-                color: accent,
-                borderRadius: BorderRadius.circular(20),
-                border: Border.all(width: .5, color: accent)),
+                color: primaryColor.withOpacity(0),
+                borderRadius: BorderRadius.circular(20)),
             child: Align(
                 alignment: Alignment.center,
-                child: Image.asset('assets/images/icon.png', width: 30,height: 30,)),
+                child: booksDataList.id ==1 ?
+                Image.asset('assets/images/book_icon.png', width: 40,height: 45,):
+                booksDataList.id ==2 ?
+                Image.asset('assets/images/book_icon2.png', width: 40,height: 45,):
+                booksDataList.id ==3 ?
+                Image.asset('assets/images/book_icon3.png', width: 40,height: 45,):
+                booksDataList.id ==4 ?
+                Image.asset('assets/images/book_icon4.png', width: 40,height: 45,):
+                booksDataList.id ==5 ?
+                Image.asset('assets/images/book_icon5.png', width: 40,height: 45,):
+                Image.asset('assets/images/book_icon6.png', width: 40,height: 45,)),
           ),
           title: Text(chapterDataList.title, style: TextStyle(color: Colors.white, fontSize: 18),),
           subtitle: Text('হাদিসের রেন্জ: '+chapterDataList.hadis_range,style: TextStyle(color: primaryBackground.withOpacity(.5))),

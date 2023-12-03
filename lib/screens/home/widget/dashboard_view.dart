@@ -36,17 +36,19 @@ class DashboardCard extends StatelessWidget {
         child: Column(
           children: [
             SizedBox(height: 15,),
-            Container(
-              width: 45,
-              height: 45,
-              decoration: BoxDecoration(
-                  color: accent,
-                  borderRadius: BorderRadius.circular(20),
-                  border: Border.all(width: .5, color: accent)),
-              child: Align(
-                  alignment: Alignment.center,
-                  child: Image.asset('assets/images/icon.png', width: 30,height: 30,)),
-            ),
+            Align(
+                alignment: Alignment.center,
+                child: booksDataList.id ==1 ?
+                Image.asset('assets/images/book_icon.png', width: 40,height: 45,):
+                booksDataList.id ==2 ?
+                Image.asset('assets/images/book_icon2.png', width: 40,height: 45,):
+                booksDataList.id ==3 ?
+                Image.asset('assets/images/book_icon3.png', width: 40,height: 45,):
+                booksDataList.id ==4 ?
+                Image.asset('assets/images/book_icon4.png', width: 40,height: 45,):
+                booksDataList.id ==5 ?
+                Image.asset('assets/images/book_icon5.png', width: 40,height: 45,):
+                Image.asset('assets/images/book_icon6.png', width: 40,height: 45,)),
             SizedBox(height: 10,),
             Text(
               booksDataList.title,
