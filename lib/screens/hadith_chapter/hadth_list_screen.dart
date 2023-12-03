@@ -1,11 +1,12 @@
 import 'dart:math';
 import 'package:al_hadith/data/model/books_model.dart';
 import 'package:al_hadith/data/model/chapter_model.dart';
+import 'package:al_hadith/screens/hadith_chapter/widget/chapter_list_view.dart';
 import 'package:al_hadith/utill/color_resources.dart';
 import 'package:flutter/material.dart';
 
-import '../data/helper/database_helper.dart';
-import 'hadith_discloser_screen.dart';
+import '../../data/helper/database_helper.dart';
+import '../hadith_details/hadith_discloser_screen.dart';
 
 class HadithListScreen extends StatefulWidget {
   BooksDataModel booksDataList;
@@ -84,34 +85,7 @@ class _HadithListScreenState extends State<HadithListScreen> {
               itemCount: _chapterDataList.length,
               padding: const EdgeInsets.symmetric(horizontal: 8),
               itemBuilder: (context, index) {
-                return InkWell(
-                  onTap: (){
-                    Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context)=> HadithDiscloserScreen(widget.booksDataList, _chapterDataList[index])
-                    ));
-                  },
-                  child: Card(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(15.0),
-                    ),
-                    color: primaryColor.withOpacity(0),
-                    child: ListTile(
-                      leading: Container(
-                        width: 45,
-                        height: 45,
-                        decoration: BoxDecoration(
-                            color: accent,
-                            borderRadius: BorderRadius.circular(20),
-                            border: Border.all(width: .5, color: accent)),
-                        child: Align(
-                            alignment: Alignment.center,
-                            child: Image.asset('assets/images/icon.png', width: 30,height: 30,)),
-                      ),
-                      title: Text(_chapterDataList[index].title, style: TextStyle(color: Colors.white, fontSize: 18),),
-                      subtitle: Text('হাদিসের রেন্জ: '+_chapterDataList[index].hadis_range,style: TextStyle(color: primaryBackground.withOpacity(.5))),
-                    ),
-                  ),
-                );
+                return ChapterView(widget.booksDataList, _chapterDataList[index]);
               },
             ),
           ),
