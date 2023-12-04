@@ -1,12 +1,15 @@
 import 'dart:math';
 
+import 'package:al_hadith/screens/dua/dua_screen.dart';
 import 'package:al_hadith/screens/home/widget/banners_view.dart';
 import 'package:al_hadith/screens/home/widget/dashboard_view.dart';
 import 'package:al_hadith/utill/color_resources.dart';
 import 'package:flutter/material.dart';
 import '../../data/helper/database_helper.dart';
 import '../../data/model/books_model.dart';
+import '../biography/biography_screen.dart';
 import '../hadith_chapter/hadth_list_screen.dart';
+import '../kalima/kalima_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -85,37 +88,63 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Image.asset('assets/images/sefa_icon.png', width: 35,height: 35,),
-                            SizedBox(height: 8,),
-                            Text('কালিমা', style: TextStyle(color: Colors.white))
-                          ],
+                        GestureDetector(
+                          onTap: (){
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context)=> KilimaListScreen()
+                            ));
+                          },
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Image.asset('assets/images/sefa_icon.png', width: 35,height: 35,),
+                              SizedBox(height: 8,),
+                              Text('কালিমা', style: TextStyle(color: Colors.white))
+                            ],
+                          ),
                         ),
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Image.asset('assets/images/dua_icon.png', width: 40,height: 40,),
-                            SizedBox(height: 8,),
-                            Text('দোয়া', style: TextStyle(color: Colors.white))
-                          ],
+                        GestureDetector(
+                          onTap: (){
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context)=> DuaListScreen()
+                            ));
+                          },
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Image.asset('assets/images/dua_icon.png', width: 40,height: 40,),
+                              SizedBox(height: 8,),
+                              Text('দোয়া', style: TextStyle(color: Colors.white))
+                            ],
+                          ),
                         ),
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Image.asset('assets/images/biography_icon.png', width: 40,height: 40,),
-                            SizedBox(height: 8,),
-                            Text('জীবনী', style: TextStyle(color: Colors.white))
-                          ],
+                        GestureDetector(
+                          onTap: (){
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context)=> BiographyListScreen()
+                            ));
+                          },
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Image.asset('assets/images/biography_icon.png', width: 40,height: 40,),
+                              SizedBox(height: 8,),
+                              Text('জীবনী', style: TextStyle(color: Colors.white))
+                            ],
+                          ),
                         ),
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Image.asset('assets/images/qibla_icon.png', width: 40,height: 40,),
-                            SizedBox(height: 8,),
-                            Text('কিবলা', style: TextStyle(color: Colors.white),)
-                          ],
+                        GestureDetector(
+                          onTap: (){
+
+                          },
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Image.asset('assets/images/qibla_icon.png', width: 40,height: 40,),
+                              SizedBox(height: 8,),
+                              Text('কিবলা', style: TextStyle(color: Colors.white),)
+                            ],
+                          ),
                         )
                       ],
                     ),

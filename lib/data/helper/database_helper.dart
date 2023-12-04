@@ -1,5 +1,8 @@
 import 'dart:io';
 import 'dart:typed_data';
+import 'package:al_hadith/data/model/biography_model.dart';
+import 'package:al_hadith/data/model/dua_model.dart';
+import 'package:al_hadith/data/model/kalima_model.dart';
 import 'package:flutter/services.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
@@ -68,6 +71,18 @@ class DatabaseHelper {
       "SELECT name FROM sqlite_master WHERE type='table' AND name='section'",
     );
 
+    var kalimaTableExists = await db.rawQuery(
+      "SELECT name FROM sqlite_master WHERE type='table' AND name='kalima'",
+    );
+
+    var duaTableExists = await db.rawQuery(
+      "SELECT name FROM sqlite_master WHERE type='table' AND name='dua'",
+    );
+
+    var biographyTableExists = await db.rawQuery(
+      "SELECT name FROM sqlite_master WHERE type='table' AND name='biography'",
+    );
+
     if (booksTableExists.isEmpty) {
       await db.execute('''
       CREATE TABLE books (
@@ -134,6 +149,39 @@ class DatabaseHelper {
       )
     ''');
     }
+
+    if (kalimaTableExists.isEmpty) {
+      await db.execute('''
+      CREATE TABLE kalima (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        name TEXT,
+        kalima_ar TEXT,
+        kalima_bn TEXT
+      )
+    ''');
+    }
+
+    if (duaTableExists.isEmpty) {
+      await db.execute('''
+      CREATE TABLE dua (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        name TEXT,
+        dua_ar TEXT,
+        dua_bn TEXT
+      )
+    ''');
+    }
+
+    if (biographyTableExists.isEmpty) {
+      await db.execute('''
+      CREATE TABLE biography (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        name TEXT,
+        lifetime TEXT,
+        biography TEXT
+      )
+    ''');
+    }
   }
 
 
@@ -167,6 +215,30 @@ class DatabaseHelper {
     final db = await instance.database;
     await db.insert(
         'section',sectionDataModel.toMap()
+    );
+  }
+
+  ///insert kalima data
+  Future<void> insertKalimaData(KalimaDataModel kalimaDataModel) async {
+    final db = await instance.database;
+    await db.insert(
+        'kalima',kalimaDataModel.toMap()
+    );
+  }
+
+  ///insert dua data
+  Future<void> insertDuaData(DuaDataModel duaDataModel) async {
+    final db = await instance.database;
+    await db.insert(
+        'dua',duaDataModel.toMap()
+    );
+  }
+
+  ///insert biography data
+  Future<void> insertBiographyData(BiographyDataModel biographyDataModel) async {
+    final db = await instance.database;
+    await db.insert(
+        'biography',biographyDataModel.toMap()
     );
   }
 
@@ -220,6 +292,36 @@ class DatabaseHelper {
 
     return List.generate(maps.length, (i) {
       return SectionDataModel.fromMap(maps[i]);
+    });
+  }
+
+  ///getting kalima data
+  Future<List<KalimaDataModel>> getAllKalimaData() async {
+    final db = await instance.database;
+    final List<Map<String, dynamic>> maps = await db.query('kalima');
+
+    return List.generate(maps.length, (i) {
+      return KalimaDataModel.fromMap(maps[i]);
+    });
+  }
+
+  ///getting dua data
+  Future<List<DuaDataModel>> getAllDuaData() async {
+    final db = await instance.database;
+    final List<Map<String, dynamic>> maps = await db.query('dua');
+
+    return List.generate(maps.length, (i) {
+      return DuaDataModel.fromMap(maps[i]);
+    });
+  }
+
+  ///getting biography data
+  Future<List<BiographyDataModel>> getAllBiographyData() async {
+    final db = await instance.database;
+    final List<Map<String, dynamic>> maps = await db.query('biography');
+
+    return List.generate(maps.length, (i) {
+      return BiographyDataModel.fromMap(maps[i]);
     });
   }
 
