@@ -3,12 +3,14 @@ class KalimaDataModel {
   String name;
   String kalima_ar;
   String kalima_bn;
+  String pronunciation;
 
   KalimaDataModel({
     this.id,
     required this.name,
     required this.kalima_ar,
     required this.kalima_bn,
+    required this.pronunciation,
   });
 
   // Named constructor for null initialization
@@ -16,7 +18,8 @@ class KalimaDataModel {
       : id = null,
         name = '',
         kalima_ar = '',
-        kalima_bn = '';
+        kalima_bn = '',
+        pronunciation = '';
 
   // Rest of your class code...
 
@@ -26,6 +29,7 @@ class KalimaDataModel {
       'name': name,
       'kalima_ar': kalima_ar,
       'kalima_bn': kalima_bn,
+      'pronunciation': pronunciation,
 
     };
   }
@@ -37,11 +41,12 @@ class KalimaDataModel {
       name: map['name'],
       kalima_ar: map['kalima_ar'],
       kalima_bn: map['kalima_bn'],
+      pronunciation: map['pronunciation'],
     );
   }
 
   @override
   String toString() {
-    return 'KalimaDataModel{id: $id, name: $name, kalima_ar: $kalima_ar, kalima_bn: $kalima_bn}';
+    return 'KalimaDataModel{id: $id, name: $name, kalima_ar: $kalima_ar, kalima_bn: $kalima_bn, pronunciation: $pronunciation}';
   }
 }

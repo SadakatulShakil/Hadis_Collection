@@ -48,7 +48,7 @@ class BiographyDetailsView extends StatelessWidget {
                         ),
                         Column(
                           children: [
-                            Text(biographyDataList.name, style: TextStyle(fontSize: 18, color: Colors.white),),
+                            Text(biographyDataList.name, style: TextStyle(fontSize: 20, color: Colors.white),),
                           ],
                         ),
                       ],
@@ -60,10 +60,10 @@ class BiographyDetailsView extends StatelessWidget {
                   padding: const EdgeInsets.all(8.0),
                   child: Align(
                     alignment: Alignment.center,
-                      child: Text('ঊনার জীবদ্দশা ছিলঃ ' +biographyDataList.lifetime, textAlign: TextAlign.end, style: TextStyle(fontSize: 18, color: Colors.white,),)),
+                      child: Text('ঊনার জীবদ্দশা ছিলঃ ' +biographyDataList.lifetime, textAlign: TextAlign.end, style: TextStyle(fontSize: 20, color: Colors.white,),)),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(left: 8.0, right: 8),
+                  padding: const EdgeInsets.only(left: 12.0, right: 8, bottom: 8),
                   child: Align(
                       alignment: Alignment.centerLeft,
                       child: Text(biographyDataList.biography, style: TextStyle(fontSize: 18, color: Colors.white, fontWeight: FontWeight.w600),)),

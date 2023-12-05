@@ -156,7 +156,8 @@ class DatabaseHelper {
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         name TEXT,
         kalima_ar TEXT,
-        kalima_bn TEXT
+        kalima_bn TEXT,
+        pronunciation TEXT,
       )
     ''');
     }
@@ -165,9 +166,12 @@ class DatabaseHelper {
       await db.execute('''
       CREATE TABLE dua (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
+        category_id INTEGER,
         name TEXT,
         dua_ar TEXT,
-        dua_bn TEXT
+        dua_bn TEXT,
+        pronunciation TEXT,
+        fazilat TEXT
       )
     ''');
     }

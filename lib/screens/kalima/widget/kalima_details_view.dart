@@ -60,10 +60,22 @@ class KalimaDetailsView extends StatelessWidget {
                 padding: const EdgeInsets.all(8.0),
                 child: Align(
                     alignment: Alignment.centerLeft,
+                    child: Text('বাংলা উচ্চারনঃ ', textAlign: TextAlign.end, style: TextStyle(fontSize: 20, color: Colors.white,),)),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 15.0, right: 8, bottom: 8),
+                child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(kalimaDataList.pronunciation, style: TextStyle(fontSize: 18, color: Colors.white, fontWeight: FontWeight.w600),)),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Align(
+                    alignment: Alignment.centerLeft,
                     child: Text('বাংলা অনুবাদঃ ', textAlign: TextAlign.end, style: TextStyle(fontSize: 20, color: Colors.white,),)),
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 15.0, right: 8),
+                padding: const EdgeInsets.only(left: 15.0, right: 8, bottom: 8),
                 child: Align(
                     alignment: Alignment.centerLeft,
                     child: Text(kalimaDataList.kalima_bn, style: TextStyle(fontSize: 18, color: Colors.white, fontWeight: FontWeight.w600),)),

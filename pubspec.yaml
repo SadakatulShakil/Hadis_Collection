@@ -73,7 +73,7 @@ flutter_launcher_icons:
         - 180x180
         - 1024x1024
       unselected_sizes:
-        - 30x30
+        - 25x25
       ios_image: "assets/images/icon.png"
 
 # For information on the generic Dart part of this file, see the
