@@ -54,7 +54,7 @@ class KalimaDetailsView extends StatelessWidget {
                 padding: const EdgeInsets.only(right: 15.0, bottom: 12),
                 child: Align(
                   alignment: Alignment.centerRight,
-                    child: Text(kalimaDataList.kalima_ar, textAlign: TextAlign.end, style: TextStyle(fontSize: 18, color: Colors.white,),)),
+                    child: Text(kalimaDataList.kalima_ar, textAlign: TextAlign.end, style: TextStyle(fontSize: 20, color: Colors.white,),)),
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
