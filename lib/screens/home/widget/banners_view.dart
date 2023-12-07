@@ -46,20 +46,15 @@ class BannersView extends StatelessWidget {
                   decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(10),
-                    child: FadeInImage.assetNetwork(
-                      placeholder: mainBannerList[index], fit: BoxFit.cover,
-                      image: mainBannerList[index],
-                      imageErrorBuilder: (c, o, s) => Image.asset(mainBannerList[index], fit: BoxFit.cover),
+                    child: Image.asset(mainBannerList[index], fit: BoxFit.cover),
                     ),
                   ),
-                ),
               );
             },
           ),
         ],
       )
     ),
-
         const SizedBox(height: 5),
       ],
     );

@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:al_hadith/screens/dua/dua_screen.dart';
 import 'package:al_hadith/screens/home/widget/banners_view.dart';
 import 'package:al_hadith/screens/home/widget/dashboard_view.dart';
+import 'package:al_hadith/screens/qibla_compass/qibla_compass.dart';
 import 'package:al_hadith/utill/color_resources.dart';
 import 'package:flutter/material.dart';
 import '../../data/helper/database_helper.dart';
@@ -135,7 +136,9 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                         GestureDetector(
                           onTap: (){
-
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context)=> QiblahCompass()
+                            ));
                           },
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,

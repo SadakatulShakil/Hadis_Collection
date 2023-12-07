@@ -10,3 +10,4 @@ Color primaryColor = Color(0xFF1E3A34);
 Color greyShade = Color(0xFF93B3AA);
 Color accentShade = Color(0xFF78C2A7);
 Color cyanColor = Color(0xFF6D7E6E);
+Color arabicColor = Color(0xFFA4790D);

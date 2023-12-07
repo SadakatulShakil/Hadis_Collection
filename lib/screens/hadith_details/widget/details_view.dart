@@ -72,7 +72,7 @@ class HadithDetailsView extends StatelessWidget {
                 padding: const EdgeInsets.all(8.0),
                 child: Align(
                   alignment: Alignment.center,
-                    child: Text(hadithDataList.ar, textAlign: TextAlign.end, style: TextStyle(fontSize: 18, color: Colors.white,),)),
+                    child: Text(hadithDataList.ar, textAlign: TextAlign.end, style: TextStyle(fontSize: 18, color: arabicColor,),)),
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 8.0, right: 8),
