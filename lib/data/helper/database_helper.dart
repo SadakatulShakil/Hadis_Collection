@@ -44,14 +44,6 @@ class DatabaseHelper {
     );
   }
 
-  Future<void> _onUpgrade(Database db, int oldVersion, int newVersion) async {
-    if (oldVersion < newVersion) {
-      await db.execute('DROP TABLE IF EXISTS user'); // Drop the existing table
-      _onCreate(db, newVersion); // Recreate the table with new schema
-    }
-  }
-
-
 
   Future<void> _onCreate(Database db, int version) async {
     // Check if the tables already exist
@@ -187,65 +179,6 @@ class DatabaseHelper {
     ''');
     }
   }
-
-
-
-  ///insert books data
-  Future<void> insertBooksData(BooksDataModel booksDataModel) async {
-    final db = await instance.database;
-    await db.insert(
-      'books',booksDataModel.toMap()
-    );
-  }
-
-  ///insert chapter data
-  Future<void> insertChapterData(ChapterDataModel chapterDataModel) async {
-    final db = await instance.database;
-    await db.insert(
-        'chapter',chapterDataModel.toMap()
-    );
-  }
-
-  ///insert hadith data
-  Future<void> insertHadithData(HadithDataModel hadithDataModel) async {
-    final db = await instance.database;
-    await db.insert(
-        'hadith',hadithDataModel.toMap()
-    );
-  }
-
-  ///insert section data
-  Future<void> insertSectionData(SectionDataModel sectionDataModel) async {
-    final db = await instance.database;
-    await db.insert(
-        'section',sectionDataModel.toMap()
-    );
-  }
-
-  ///insert kalima data
-  Future<void> insertKalimaData(KalimaDataModel kalimaDataModel) async {
-    final db = await instance.database;
-    await db.insert(
-        'kalima',kalimaDataModel.toMap()
-    );
-  }
-
-  ///insert dua data
-  Future<void> insertDuaData(DuaDataModel duaDataModel) async {
-    final db = await instance.database;
-    await db.insert(
-        'dua',duaDataModel.toMap()
-    );
-  }
-
-  ///insert biography data
-  Future<void> insertBiographyData(BiographyDataModel biographyDataModel) async {
-    final db = await instance.database;
-    await db.insert(
-        'biography',biographyDataModel.toMap()
-    );
-  }
-
 
   ///...............................................///
 

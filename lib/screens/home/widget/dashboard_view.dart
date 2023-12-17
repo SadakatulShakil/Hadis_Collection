@@ -20,6 +20,29 @@ class DashboardCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String convertToBanglaNumber(String englishNumber) {
+      Map<String, String> digitMap = {
+        '0': '০',
+        '1': '১',
+        '2': '২',
+        '3': '৩',
+        '4': '৪',
+        '5': '৫',
+        '6': '৬',
+        '7': '৭',
+        '8': '৮',
+        '9': '৯',
+      };
+
+      String banglaNumber = '';
+
+      for (int i = 0; i < englishNumber.length; i++) {
+        String digit = englishNumber[i];
+        banglaNumber += digitMap[digit] ?? digit;
+      }
+
+      return banglaNumber;
+    }
     final randomColor = _generateRandomColor();
     return GestureDetector(
       onTap: (){
@@ -61,7 +84,7 @@ class DashboardCard extends StatelessWidget {
             ),
             SizedBox(height: 20,),
             Text(
-              booksDataList.number_of_hadis.toString()+' টি হাদিস',
+              '${convertToBanglaNumber(booksDataList.number_of_hadis.toString())} টি হাদিস',
               style: TextStyle(fontSize: 14, color: Colors.white),
               textAlign: TextAlign.center,
             ),
