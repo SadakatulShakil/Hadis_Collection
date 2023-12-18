@@ -34,7 +34,7 @@ class KalimListView extends StatelessWidget {
                 alignment: Alignment.center,
                 child: Image.asset('assets/images/book_icon6.png', width: 40,height: 45,)),
           ),
-          title: Text(kalimaDataList.name, style: TextStyle(color: Colors.white, fontSize: 18),),
+          title: Text(kalimaDataList.name, style: TextStyle(color: Colors.white, fontSize: 18 / MediaQuery.textScaleFactorOf(context)),),
         ),
       ),
     );

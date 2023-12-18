@@ -10,14 +10,6 @@ class DashboardCard extends StatelessWidget {
   BooksDataModel booksDataList;
   DashboardCard(this.booksDataList);
 
-  // Generate a random color with reduced opacity
-  Color _generateRandomColor() {
-    final random = Random();
-    final color = Colors.primaries[random.nextInt(Colors.primaries.length)]
-        .withOpacity(0.3);
-    return color;
-  }
-
   @override
   Widget build(BuildContext context) {
     String convertToBanglaNumber(String englishNumber) {
@@ -43,7 +35,6 @@ class DashboardCard extends StatelessWidget {
 
       return banglaNumber;
     }
-    final randomColor = _generateRandomColor();
     return GestureDetector(
       onTap: (){
         Navigator.of(context).push(MaterialPageRoute(
@@ -75,17 +66,17 @@ class DashboardCard extends StatelessWidget {
             SizedBox(height: 10,),
             Text(
               booksDataList.title,
-              style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold, color: Colors.white),
+              style: TextStyle(fontSize: 15 / MediaQuery.textScaleFactorOf(context), fontWeight: FontWeight.bold, color: Colors.white),
             ),
             Text(
               'ইমাম '+ removeFirstWord(booksDataList.title),
-              style: TextStyle(fontSize: 14, color: Colors.white),
+              style: TextStyle(fontSize: 14 / MediaQuery.textScaleFactorOf(context), color: Colors.white),
               textAlign: TextAlign.center,
             ),
             SizedBox(height: 20,),
             Text(
               '${convertToBanglaNumber(booksDataList.number_of_hadis.toString())} টি হাদিস',
-              style: TextStyle(fontSize: 14, color: Colors.white),
+              style: TextStyle(fontSize: 14 / MediaQuery.textScaleFactorOf(context), color: Colors.white),
               textAlign: TextAlign.center,
             ),
           ],
@@ -143,7 +134,7 @@ class DrawerContent extends StatelessWidget {
           },
           child: ListTile(
             leading: Icon(Icons.home),
-            title: Text('Home'),
+            title: Text('Home', style: TextStyle(fontSize: 16 / MediaQuery.textScaleFactorOf(context))),
           ),
         ),
         GestureDetector(
@@ -154,7 +145,7 @@ class DrawerContent extends StatelessWidget {
           },
           child: ListTile(
             leading: Icon(Icons.contact_page_outlined),
-            title: Text('Contact'),
+            title: Text('Contact', style: TextStyle(fontSize: 16 / MediaQuery.textScaleFactorOf(context))),
           ),
         ),
         GestureDetector(
@@ -165,7 +156,7 @@ class DrawerContent extends StatelessWidget {
           },
           child: ListTile(
             leading: Icon(Icons.support_agent_rounded),
-            title: Text('About us'),
+            title: Text('About us', style: TextStyle(fontSize: 16 / MediaQuery.textScaleFactorOf(context))),
           ),
         ),
         GestureDetector(
@@ -177,7 +168,7 @@ class DrawerContent extends StatelessWidget {
           },
           child: ListTile(
             leading: Icon(Icons.menu_book_rounded),
-            title: Text('About Writer'),
+            title: Text('About Writer', style: TextStyle(fontSize: 16 / MediaQuery.textScaleFactorOf(context))),
           ),
         ),
         GestureDetector(
@@ -189,7 +180,7 @@ class DrawerContent extends StatelessWidget {
           },
           child: ListTile(
             leading: Icon(Icons.privacy_tip),
-            title: Text('Privacy policy'),
+            title: Text('Privacy policy', style: TextStyle(fontSize: 16 / MediaQuery.textScaleFactorOf(context))),
           ),
         ),
         GestureDetector(
@@ -201,7 +192,7 @@ class DrawerContent extends StatelessWidget {
           },
           child: ListTile(
             leading: Icon(Icons.share),
-            title: Text('Share App'),
+            title: Text('Share App', style: TextStyle(fontSize: 16 / MediaQuery.textScaleFactorOf(context))),
           ),
         ),
         GestureDetector(
@@ -213,7 +204,7 @@ class DrawerContent extends StatelessWidget {
           },
           child: ListTile(
             leading: Icon(Icons.star_rate_outlined),
-            title: Text('Rating'),
+            title: Text('Rating', style: TextStyle(fontSize: 16 / MediaQuery.textScaleFactorOf(context))),
           ),
         ),
       ],

@@ -45,7 +45,7 @@ class BiographyDetailsView extends StatelessWidget {
         elevation: 0,
         title: Align(
             alignment: Alignment.centerLeft,
-            child: Text('নবীর জীবনী',style: TextStyle(fontWeight: FontWeight.w400, fontSize: 15))),
+            child: Text('নবীর জীবনী',style: TextStyle(fontWeight: FontWeight.w400, fontSize: 24 / MediaQuery.textScaleFactorOf(context)))),
       ),
       body: SingleChildScrollView(
         child: Card(
@@ -76,7 +76,7 @@ class BiographyDetailsView extends StatelessWidget {
                         ),
                         Column(
                           children: [
-                            Text(biographyDataList.name, style: TextStyle(fontSize: 20, color: Colors.white),),
+                            Text(biographyDataList.name, style: TextStyle(fontSize: 20 / MediaQuery.textScaleFactorOf(context), color: Colors.white),),
                           ],
                         ),
                       ],
@@ -88,7 +88,7 @@ class BiographyDetailsView extends StatelessWidget {
                   padding: const EdgeInsets.all(8.0),
                   child: Align(
                     alignment: Alignment.centerLeft,
-                      child: Text('ঊনার জীবদ্দশা ছিলঃ ' +biographyDataList.lifetime, textAlign: TextAlign.start, style: TextStyle(fontSize: 20, color: Colors.white,),)),
+                      child: Text('ঊনার জীবদ্দশা ছিলঃ ' +biographyDataList.lifetime, textAlign: TextAlign.start, style: TextStyle(fontSize: 20 / MediaQuery.textScaleFactorOf(context), color: Colors.white,),)),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(left: 12.0, right: 8, bottom: 8),

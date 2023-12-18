@@ -125,7 +125,7 @@ class _HomeScreenState extends State<HomeScreen> {
       child: Scaffold(
           backgroundColor: primaryColor,
           appBar: AppBar(
-            title: Text('ঈমান ও সুন্নাহ'),
+            title: Text('ঈমান ও সুন্নাহ', style: TextStyle(fontSize: 24 / MediaQuery.textScaleFactorOf(context)),),
             centerTitle: true,
             backgroundColor: primaryColor,
             elevation: 0,
@@ -145,8 +145,17 @@ class _HomeScreenState extends State<HomeScreen> {
                       right: 40,
                       child: Column(
                         children: [
-                          Text('আজকের তারিখ: ${convertToBanglaNumber(formattedDate)}', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600, fontSize: 16),),
-                          Text(getNextPrayerTime(), textAlign: TextAlign.center, style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600, fontSize: 17)),
+                          Text('আজকের তারিখ: ${convertToBanglaNumber(formattedDate)}',
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.w600,
+                                fontSize: 16 / MediaQuery.of(context).textScaleFactor),),
+                          Text(getNextPrayerTime(),
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 17 / MediaQuery.of(context).textScaleFactor)),
                         ],
                       ),
                     ),
@@ -180,7 +189,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               children: [
                                 Image.asset('assets/images/sefa_icon.png', width: 35,height: 35,),
                                 SizedBox(height: 8,),
-                                Text('কালিমা', style: TextStyle(color: Colors.white))
+                                Text('কালিমা', style: TextStyle(color: Colors.white, fontSize: 15 / MediaQuery.textScaleFactorOf(context)))
                               ],
                             ),
                           ),
@@ -195,7 +204,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               children: [
                                 Image.asset('assets/images/dua_icon.png', width: 40,height: 40,),
                                 SizedBox(height: 8,),
-                                Text('দোয়া', style: TextStyle(color: Colors.white))
+                                Text('দোয়া', style: TextStyle(color: Colors.white , fontSize: 15 / MediaQuery.textScaleFactorOf(context)))
                               ],
                             ),
                           ),
@@ -210,7 +219,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               children: [
                                 Image.asset('assets/images/biography_icon.png', width: 40,height: 40,),
                                 SizedBox(height: 8,),
-                                Text('জীবনী', style: TextStyle(color: Colors.white))
+                                Text('জীবনী', style: TextStyle(color: Colors.white, fontSize: 15 / MediaQuery.textScaleFactorOf(context)))
                               ],
                             ),
                           ),
@@ -225,7 +234,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               children: [
                                 Image.asset('assets/images/qibla_icon.png', width: 40,height: 40,),
                                 SizedBox(height: 8,),
-                                Text('কিবলা', style: TextStyle(color: Colors.white),)
+                                Text('কিবলা', style: TextStyle(color: Colors.white, fontSize: 15 / MediaQuery.textScaleFactorOf(context)),)
                               ],
                             ),
                           )

@@ -42,7 +42,7 @@ class KalimaDetailsView extends StatelessWidget {
                       ),
                       Column(
                         children: [
-                          Text(kalimaDataList.name, style: TextStyle(fontSize: 18, color: Colors.white),),
+                          Text(kalimaDataList.name, style: TextStyle(fontSize: 18 / MediaQuery.textScaleFactorOf(context), color: Colors.white),),
                         ],
                       ),
                     ],
@@ -54,31 +54,31 @@ class KalimaDetailsView extends StatelessWidget {
                 padding: const EdgeInsets.only(right: 15.0, bottom: 12),
                 child: Align(
                   alignment: Alignment.centerRight,
-                    child: Text(kalimaDataList.kalima_ar, textAlign: TextAlign.end, style: TextStyle(fontSize: 20, color: arabicColor, fontWeight: FontWeight.w600),)),
+                    child: Text(kalimaDataList.kalima_ar, textAlign: TextAlign.end, style: TextStyle(fontSize: 20 / MediaQuery.textScaleFactorOf(context), color: arabicColor, fontWeight: FontWeight.w600),)),
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Align(
                     alignment: Alignment.centerLeft,
-                    child: Text('বাংলা উচ্চারনঃ ', textAlign: TextAlign.end, style: TextStyle(fontSize: 16, color: Colors.white,),)),
+                    child: Text('বাংলা উচ্চারনঃ ', textAlign: TextAlign.end, style: TextStyle(fontSize: 16 / MediaQuery.textScaleFactorOf(context), color: Colors.white,),)),
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 15.0, right: 8, bottom: 8),
                 child: Align(
                     alignment: Alignment.centerLeft,
-                    child: Text(kalimaDataList.pronunciation, style: TextStyle(fontSize: 16, color: arabicColor, fontWeight: FontWeight.w600),)),
+                    child: Text(kalimaDataList.pronunciation, style: TextStyle(fontSize: 16 / MediaQuery.textScaleFactorOf(context), color: arabicColor, fontWeight: FontWeight.w600),)),
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Align(
                     alignment: Alignment.centerLeft,
-                    child: Text('বাংলা অনুবাদঃ ', textAlign: TextAlign.end, style: TextStyle(fontSize: 16, color: Colors.white,),)),
+                    child: Text('বাংলা অনুবাদঃ ', textAlign: TextAlign.end, style: TextStyle(fontSize: 16 / MediaQuery.textScaleFactorOf(context), color: Colors.white,),)),
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 15.0, right: 8, bottom: 8),
                 child: Align(
                     alignment: Alignment.centerLeft,
-                    child: Text(kalimaDataList.kalima_bn, style: TextStyle(fontSize: 16, color: Colors.white),)),
+                    child: Text(kalimaDataList.kalima_bn, style: TextStyle(fontSize: 16 / MediaQuery.textScaleFactorOf(context), color: Colors.white),)),
               )
             ],
           ),

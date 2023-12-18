@@ -64,7 +64,7 @@ class _DuaListScreenState extends State<DuaListScreen> {
         elevation: 0,
         title: Align(
             alignment: Alignment.centerLeft,
-            child: Text('দোয়া সমূহ',style: TextStyle(fontWeight: FontWeight.w400, fontSize: 15))),
+            child: Text('দোয়া সমূহ',style: TextStyle(fontWeight: FontWeight.w400, fontSize: 24 / MediaQuery.textScaleFactorOf(context)))),
       ),
       body:Column(
         children: [

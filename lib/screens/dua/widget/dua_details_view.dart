@@ -17,7 +17,7 @@ class DuaDetailsView extends StatelessWidget {
         elevation: 0,
         title: Align(
             alignment: Alignment.centerLeft,
-            child: Text('দোয়া',style: TextStyle(fontWeight: FontWeight.w400, fontSize: 15))),
+            child: Text('দোয়া',style: TextStyle(fontWeight: FontWeight.w400, fontSize: 24 / MediaQuery.textScaleFactorOf(context)))),
       ),
       body: SingleChildScrollView(
         child: Card(
@@ -48,7 +48,7 @@ class DuaDetailsView extends StatelessWidget {
                         ),
                         Column(
                           children: [
-                            Text(duaDataList.name, style: TextStyle(fontSize: 18, color: Colors.white),),
+                            Text(duaDataList.name, style: TextStyle(fontSize: 18 / MediaQuery.textScaleFactorOf(context), color: Colors.white),),
                           ],
                         ),
                       ],
@@ -60,31 +60,31 @@ class DuaDetailsView extends StatelessWidget {
                   padding: const EdgeInsets.only(right: 15.0, bottom: 12),
                   child: Align(
                     alignment: Alignment.centerRight,
-                      child: Text(duaDataList.dua_ar, textAlign: TextAlign.end, style: TextStyle(fontSize: 18, color: arabicColor, fontWeight: FontWeight.w600),)),
+                      child: Text(duaDataList.dua_ar, textAlign: TextAlign.end, style: TextStyle(fontSize: 18 / MediaQuery.textScaleFactorOf(context), color: arabicColor, fontWeight: FontWeight.w600),)),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Align(
                       alignment: Alignment.centerLeft,
-                      child: Text('বাংলা উচ্চারনঃ ', textAlign: TextAlign.end, style: TextStyle(fontSize: 16, color: Colors.white,),)),
+                      child: Text('বাংলা উচ্চারনঃ ', textAlign: TextAlign.end, style: TextStyle(fontSize: 16 / MediaQuery.textScaleFactorOf(context), color: Colors.white,),)),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(left: 15.0, right: 8, bottom: 8),
                   child: Align(
                       alignment: Alignment.centerLeft,
-                      child: Text(duaDataList.pronunciation, style: TextStyle(fontSize: 16, color: arabicColor, fontWeight: FontWeight.w600),)),
+                      child: Text(duaDataList.pronunciation, style: TextStyle(fontSize: 16 / MediaQuery.textScaleFactorOf(context), color: arabicColor, fontWeight: FontWeight.w600),)),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Align(
                       alignment: Alignment.centerLeft,
-                      child: Text('বাংলা অনুবাদঃ ', textAlign: TextAlign.end, style: TextStyle(fontSize: 16, color: Colors.white,),)),
+                      child: Text('বাংলা অনুবাদঃ ', textAlign: TextAlign.end, style: TextStyle(fontSize: 16 / MediaQuery.textScaleFactorOf(context), color: Colors.white,),)),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(left: 15.0, right: 8, bottom: 8),
                   child: Align(
                       alignment: Alignment.centerLeft,
-                      child: Text(duaDataList.dua_bn, style: TextStyle(fontSize: 16, color: Colors.white),)),
+                      child: Text(duaDataList.dua_bn, style: TextStyle(fontSize: 16 / MediaQuery.textScaleFactorOf(context), color: Colors.white),)),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(left: 18.0, right: 18),
@@ -94,7 +94,7 @@ class DuaDetailsView extends StatelessWidget {
                   padding: const EdgeInsets.only(left: 15.0, right: 8, bottom: 8),
                   child: Align(
                       alignment: Alignment.centerLeft,
-                      child: Text('দোয়ার '+duaDataList.fazilat, style: TextStyle(fontSize: 16, color: Colors.white),)),
+                      child: Text('দোয়ার '+duaDataList.fazilat, style: TextStyle(fontSize: 16 / MediaQuery.textScaleFactorOf(context), color: Colors.white),)),
                 ),
               ],
             ),

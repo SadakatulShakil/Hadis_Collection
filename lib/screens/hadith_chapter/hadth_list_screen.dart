@@ -70,10 +70,10 @@ class _HadithListScreenState extends State<HadithListScreen> {
           children: [
             Align(
               alignment: Alignment.centerLeft,
-                child: Text(widget.booksDataList.title)),
+                child: Text(widget.booksDataList.title, style: TextStyle(fontSize: 24 / MediaQuery.textScaleFactorOf(context)),)),
             Align(
               alignment: Alignment.centerLeft,
-                child: Text(widget.booksDataList.number_of_hadis.toString()+' টি হাদিস',style: TextStyle(fontWeight: FontWeight.w400, fontSize: 15))),
+                child: Text(widget.booksDataList.number_of_hadis.toString()+' টি হাদিস',style: TextStyle(fontWeight: FontWeight.w400, fontSize: 15 / MediaQuery.textScaleFactorOf(context)))),
           ],
         ),
       ),

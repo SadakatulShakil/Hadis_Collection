@@ -74,10 +74,10 @@ class _HadithDiscloserScreenState extends State<HadithDiscloserScreen> {
           children: [
             Align(
                 alignment: Alignment.centerLeft,
-                child: Text(widget.booksDataList.title)),
+                child: Text(widget.booksDataList.title, style: TextStyle(fontSize: 24 / MediaQuery.textScaleFactorOf(context)),)),
             Align(
                 alignment: Alignment.centerLeft,
-                child: Text(widget.chapterDataList.title,style: TextStyle(fontWeight: FontWeight.w400, fontSize: 15))),
+                child: Text(widget.chapterDataList.title,style: TextStyle(fontWeight: FontWeight.w400, fontSize: 15 / MediaQuery.textScaleFactorOf(context)))),
           ],
         ),
       ),

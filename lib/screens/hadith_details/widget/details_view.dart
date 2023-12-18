@@ -59,8 +59,8 @@ class HadithDetailsView extends StatelessWidget {
                       ),
                       Column(
                         children: [
-                          Text(booksDataList.title, style: TextStyle(fontSize: 18, color: Colors.white),),
-                          Text('হাদিস: '+extractValueAfterColon(hadithDataList.hadith_key), style: TextStyle(fontSize: 15, color: primaryBackground.withOpacity(.5)),),
+                          Text(booksDataList.title, style: TextStyle(fontSize: 18 / MediaQuery.textScaleFactorOf(context), color: Colors.white),),
+                          Text('হাদিস: '+extractValueAfterColon(hadithDataList.hadith_key), style: TextStyle(fontSize: 15 / MediaQuery.textScaleFactorOf(context), color: primaryBackground.withOpacity(.5)),),
                         ],
                       ),
                     ],
@@ -72,54 +72,23 @@ class HadithDetailsView extends StatelessWidget {
                 padding: const EdgeInsets.all(8.0),
                 child: Align(
                   alignment: Alignment.center,
-                    child: Text(hadithDataList.ar, textAlign: TextAlign.end, style: TextStyle(fontSize: 18, color: arabicColor,),)),
+                    child: Text(hadithDataList.ar, textAlign: TextAlign.end, style: TextStyle(fontSize: 18 / MediaQuery.textScaleFactorOf(context), color: arabicColor,),)),
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 8.0, right: 8),
                 child: Align(
                     alignment: Alignment.centerLeft,
-                    child: Text(hadithDataList.narrator+' থেকে বর্ণিত: ', style: TextStyle(fontSize: 18, color: Colors.white, fontWeight: FontWeight.w600),)),
+                    child: Text(hadithDataList.narrator+' থেকে বর্ণিত: ', style: TextStyle(fontSize: 18 / MediaQuery.textScaleFactorOf(context), color: Colors.white, fontWeight: FontWeight.w600),)),
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Align(
                     alignment: Alignment.centerLeft,
-                    child: Text(hadithDataList.bn, style: TextStyle(fontSize: 16, color: Colors.white),)),
+                    child: Text(hadithDataList.bn, style: TextStyle(fontSize: 16 / MediaQuery.textScaleFactorOf(context), color: Colors.white),)),
               ),
             ],
           ),
         )
-        // ListTile(
-        //   leading: Container(
-        //     width: 45,
-        //     height: 45,
-        //     decoration: BoxDecoration(
-        //         color: accent,
-        //         borderRadius: BorderRadius.circular(20),
-        //         border: Border.all(width: .5, color: accent)),
-        //     child: Align(
-        //         alignment: Alignment.center,
-        //         child: Image.asset('assets/images/icon.png', width: 30,height: 30,)),
-        //   ),
-        //   title: Text(booksDataList.title, style: TextStyle(color: Colors.white, fontSize: 18)),
-        //   subtitle: Column(
-        //     children: [
-        //       Align(
-        //           alignment: Alignment.centerLeft,
-        //           child: Text('হাদিস: '+extractValueAfterColon(hadithDataList.hadith_key), style: TextStyle(color: primaryBackground.withOpacity(.5)))),
-        //       SizedBox(height: 8,),
-        //       Text(hadithDataList.ar, style: TextStyle(color: Colors.white, fontSize: 18)),
-        //       SizedBox(height: 8,),
-        //       Align(
-        //           alignment: Alignment.centerLeft,
-        //           child: Text(hadithDataList.narrator+' থেকে বর্ণিত: ', style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.w600))),
-        //       SizedBox(height: 8,),
-        //       Align(
-        //           alignment: Alignment.centerLeft,
-        //           child: Text(hadithDataList.bn, style: TextStyle(color: Colors.white, fontSize: 15))),
-        //     ],
-        //   ),
-        // ),
       ),
     );
   }

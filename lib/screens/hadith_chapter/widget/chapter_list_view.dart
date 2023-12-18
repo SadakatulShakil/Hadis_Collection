@@ -46,8 +46,8 @@ class ChapterView extends StatelessWidget {
                 Image.asset('assets/images/book_icon5.png', width: 40,height: 45,):
                 Image.asset('assets/images/book_icon6.png', width: 40,height: 45,)),
           ),
-          title: Text(chapterDataList.title, style: TextStyle(color: Colors.white, fontSize: 18),),
-          subtitle: Text('হাদিসের রেন্জ: '+chapterDataList.hadis_range,style: TextStyle(color: primaryBackground.withOpacity(.5))),
+          title: Text(chapterDataList.title, style: TextStyle(color: Colors.white, fontSize: 18 / MediaQuery.textScaleFactorOf(context)),),
+          subtitle: Text('হাদিসের রেন্জ: '+chapterDataList.hadis_range,style: TextStyle(color: primaryBackground.withOpacity(.5), fontSize: 16 / MediaQuery.textScaleFactorOf(context))),
         ),
       ),
     );

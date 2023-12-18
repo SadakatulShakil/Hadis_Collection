@@ -63,7 +63,7 @@ class _KilimaListScreenState extends State<KilimaListScreen> {
         elevation: 0,
         title: Align(
             alignment: Alignment.centerLeft,
-            child: Text('কালিমা সমূহ',style: TextStyle(fontWeight: FontWeight.w400, fontSize: 15))),
+            child: Text('কালিমা সমূহ',style: TextStyle(fontWeight: FontWeight.w400, fontSize: 24 / MediaQuery.textScaleFactorOf(context)))),
       ),
       body:Column(
         children: [
