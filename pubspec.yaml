@@ -60,6 +60,7 @@ dev_dependencies:
   http: ^1.1.0
   provider: ^6.0.5
   hijri: ^3.0.0
+  pray_times: ^0.0.1
 
 
 flutter_launcher_icons:

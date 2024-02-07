@@ -440,6 +440,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.7.3"
+  pray_times:
+    dependency: "direct dev"
+    description:
+      name: pray_times
+      sha256: e807912049967e0e55aba9c0177bc3beda2cf33e7c4948f3bcd2f66ecc486f31
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.1"
   provider:
     dependency: "direct dev"
     description:

@@ -15,6 +15,7 @@ import '../kalima/kalima_screen.dart';
 import 'package:hijri/digits_converter.dart';
 import 'package:hijri/hijri_array.dart';
 import 'package:hijri/hijri_calendar.dart';
+import 'package:pray_times/pray_times.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -25,12 +26,14 @@ class _HomeScreenState extends State<HomeScreen> {
   List<BooksDataModel> _booksDataList = [];
   String formattedDate = 'Demo date';
   String formattedDate_ar = 'Demo date';
+  String nextPrayer = 'N/A';
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     _loadLocalBooksData();
+    updateNextPrayer();
     _getPrayerData();
   }
 
@@ -86,17 +89,12 @@ class _HomeScreenState extends State<HomeScreen> {
     formattedDate = DateFormat('dd-MM-yyyy').format(currentDate);
 
     var _today = HijriCalendar.now();
-    print('year: '+_today.hYear.toString()); // 1439
-    print('month: '+_today.hMonth.toString()); // 9
-    print('day: '+_today.hDay.toString()); // 14
-    print('day name: '+_today.getDayName().toString()); // 14
-    // Get month length in days
-    print(_today.lengthOfMonth); // 30 days
     print('date: '+_today.toFormat("MMMM dd yyyy"));
     String day = convertToBanglaNumber(_today.hDay.toString());
     String month = convertArabicMonthToBangla(_today.hMonth.toString());
     String year = convertToBanglaNumber(_today.hYear.toString());
     formattedDate_ar = '$day $month, $year';
+
     final prayerProvider = Provider.of<PrayerTimeProvider>(context, listen: false);
     await prayerProvider.getPrayerData(context, formattedDate);
     setState((){
@@ -112,45 +110,95 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
-  String getNextPrayerTime() {
-    final prayerProvider = Provider.of<PrayerTimeProvider>(context, listen: false);
-    final List<String> prayerTimes = [
-      prayerProvider.FazarTime,
-      prayerProvider.DuhorTime,
-      prayerProvider.AsarTime,
-      prayerProvider.MagribTime,
-      prayerProvider.ishaTime
-    ];
-    final List<String> prayerName = [
+  // String getNextPrayerTime() {
+  //   final List<String> prayerNames = [
+  //     'ফযর ওয়াক্ত শুরু',
+  //     'সূর্যোদয়',
+  //     'যহর ওয়াক্ত শুরু',
+  //     'আসর ওয়াক্ত শুরু',
+  //     'সূর্যাস্ত',
+  //     'মাগরিব ওয়াক্ত শুরু',
+  //     'ঈসা ওয়াক্ত শুরু'
+  //   ];
+  //   DateTime currentTime = DateTime.now();
+  //   PrayerTimes prayers = new PrayerTimes();
+  //   prayers.setTimeFormat(prayers.Time12);
+  //   prayers.setCalcMethod(prayers.MWL);
+  //   prayers.setAsrJuristic(prayers.Shafii);
+  //   prayers.setAdjustHighLats(prayers.AngleBased);
+  //   var offsets = [0, 0, 0, 0, 0, 0, 0];
+  //   prayers.tune(offsets);
+  //
+  //   List<String> prayerTimes = prayers.getPrayerTimes(currentTime, 23.79135538010414, 90.40497607330978, 6);
+  //
+  //   // Convert current time to minutes since midnight for comparison
+  //   int currentMinutes = currentTime.hour * 60 + currentTime.minute;
+  //
+  //   // Iterate through prayer times to find the next prayer
+  //   for (int i = 0; i < prayerTimes.length; i++) {
+  //     // Convert prayer time to minutes since midnight for comparison
+  //     List<String> timeComponents = prayerTimes[i].split(':');
+  //     int prayerHour = int.parse(timeComponents[0]);
+  //     int prayerMinute = int.parse(timeComponents[1].split(' ')[0]);
+  //     if (timeComponents[1].contains('pm') && prayerHour != 12) {
+  //       prayerHour += 12;
+  //     }
+  //     int prayerMinutes = prayerHour * 60 + prayerMinute;
+  //
+  //     // If the current time is before the prayer time, return this prayer
+  //     if (prayerMinutes > currentMinutes) {
+  //       return '${prayerNames[i]}: ${prayerTimes[i]}';
+  //     }
+  //   }
+  //
+  //   // If no prayer is found after the current time, return the first prayer of the next day
+  //   return '${prayerNames[0]}: ${prayerTimes[0]}';
+  // }
+  void updateNextPrayer() {
+    final List<String> prayerNames = [
       'ফযর ওয়াক্ত শুরু',
+      'সূর্যোদয়',
       'যহর ওয়াক্ত শুরু',
       'আসর ওয়াক্ত শুরু',
+      'সূর্যাস্ত',
       'মাগরিব ওয়াক্ত শুরু',
       'ঈসা ওয়াক্ত শুরু'
     ];
     DateTime currentTime = DateTime.now();
+    PrayerTimes prayers = new PrayerTimes();
+    prayers.setTimeFormat(prayers.Time12);
+    prayers.setCalcMethod(prayers.MWL);
+    prayers.setAsrJuristic(prayers.Shafii);
+    prayers.setAdjustHighLats(prayers.AngleBased);
+    var offsets = [0, 0, 0, 0, 0, 0, 0];
+    prayers.tune(offsets);
 
-    for (int i = 0; i<prayerTimes.length; i++) {
-      // Convert the prayer time to DateTime format
-      DateTime parsedPrayerTime = DateFormat('HH:mm').parse(prayerTimes[i]);
+    List<String> prayerTimes = prayers.getPrayerTimes(currentTime, 23.79135538010414, 90.40497607330978, 6);
+    setState(() {
+      DateTime currentTime = DateTime.now();
+      int currentMinutes = currentTime.hour * 60 + currentTime.minute;
 
-      // Set the date to today, as we only care about the time
-      parsedPrayerTime = DateTime(
-        currentTime.year,
-        currentTime.month,
-        currentTime.day,
-        parsedPrayerTime.hour,
-        parsedPrayerTime.minute,
-      );
+      for (int i = 0; i < prayerTimes.length; i++) {
+        List<String> timeComponents = prayerTimes[i].split(':');
+        int prayerHour = int.parse(timeComponents[0]);
+        int prayerMinute = int.parse(timeComponents[1].split(' ')[0]);
+        if (timeComponents[1].contains('pm') && prayerHour != 12) {
+          prayerHour += 12;
+        }
+        int prayerMinutes = prayerHour * 60 + prayerMinute;
 
-      if (parsedPrayerTime.isAfter(currentTime)) {
-        String formattedPrayerTime = DateFormat('hh:mm').format(parsedPrayerTime);
-        return '${prayerName[i]} : ${convertToBanglaNumber(formattedPrayerTime)} মি.';
+        if (prayerMinutes > currentMinutes) {
+          nextPrayer = '${prayerNames[i]}: ${prayerTimes[i]}';
+          break;
+        }
       }
-    }
 
-    return 'ইন্টারনেট দিন এবং নিচে টেনে রিফ্রেশ করুণ';
+      if (nextPrayer.isEmpty) {
+        nextPrayer = '${prayerNames[0]}: ${prayerTimes[0]}';
+      }
+    });
   }
+
 
 
   @override
@@ -195,7 +243,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 color: Colors.white,
                                 fontWeight: FontWeight.w600,
                                 fontSize: 16 / MediaQuery.of(context).textScaleFactor),),
-                          Text(getNextPrayerTime(),
+                          Text(nextPrayer,
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                   color: Colors.white,
