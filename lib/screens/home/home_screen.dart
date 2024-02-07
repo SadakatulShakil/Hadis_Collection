@@ -1,7 +1,5 @@
-import 'dart:math';
 import 'package:al_hadith/data/helper/prayer_time_provider.dart';
 import 'package:intl/intl.dart';
-import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
 import 'package:al_hadith/screens/dua/dua_screen.dart';
 import 'package:al_hadith/screens/home/widget/banners_view.dart';
@@ -14,6 +12,9 @@ import '../../data/model/books_model.dart';
 import '../../data/model/prayer_timing_model.dart';
 import '../biography/biography_screen.dart';
 import '../kalima/kalima_screen.dart';
+import 'package:hijri/digits_converter.dart';
+import 'package:hijri/hijri_array.dart';
+import 'package:hijri/hijri_calendar.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -23,6 +24,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   List<BooksDataModel> _booksDataList = [];
   String formattedDate = 'Demo date';
+  String formattedDate_ar = 'Demo date';
 
   @override
   void initState() {
@@ -55,6 +57,27 @@ class _HomeScreenState extends State<HomeScreen> {
 
     return banglaNumber;
   }
+  String convertArabicMonthToBangla(String arabicMonth) {
+    // Map of Arabic month names to Bangla month names
+    Map<String, String> monthMapping = {
+      '1': 'মুহররম',
+      '2': 'সফর',
+      '3': 'রবিউল আউয়াল',
+      '4': ' রবিউছ ছানি',
+      '5': 'জামাদিউল আউয়াল',
+      '6': 'জামাদিউছ ছানি',
+      '7': 'রজব',
+      '8': ' শা’বান',
+      '9': 'রমজান',
+      '10': 'শাওয়াল',
+      '11': ' জিল কাইদাহ',
+      '12': 'জিল হজ্জ',
+    };
+
+    // Replace Arabic month name with Bangla month name
+    return monthMapping[arabicMonth] ?? arabicMonth;
+  }
+
 
   Future<dynamic> _getPrayerData() async {
     PrayerTiming? prayerData;
@@ -62,6 +85,18 @@ class _HomeScreenState extends State<HomeScreen> {
     // Format the date in the desired format
     formattedDate = DateFormat('dd-MM-yyyy').format(currentDate);
 
+    var _today = HijriCalendar.now();
+    print('year: '+_today.hYear.toString()); // 1439
+    print('month: '+_today.hMonth.toString()); // 9
+    print('day: '+_today.hDay.toString()); // 14
+    print('day name: '+_today.getDayName().toString()); // 14
+    // Get month length in days
+    print(_today.lengthOfMonth); // 30 days
+    print('date: '+_today.toFormat("MMMM dd yyyy"));
+    String day = convertToBanglaNumber(_today.hDay.toString());
+    String month = convertArabicMonthToBangla(_today.hMonth.toString());
+    String year = convertToBanglaNumber(_today.hYear.toString());
+    formattedDate_ar = '$day $month, $year';
     final prayerProvider = Provider.of<PrayerTimeProvider>(context, listen: false);
     await prayerProvider.getPrayerData(context, formattedDate);
     setState((){
@@ -109,8 +144,8 @@ class _HomeScreenState extends State<HomeScreen> {
       );
 
       if (parsedPrayerTime.isAfter(currentTime)) {
-        String formattedPrayerTime = DateFormat('hh:mm a').format(parsedPrayerTime);
-        return '${prayerName[i]} : ${convertToBanglaNumber(formattedPrayerTime)}';
+        String formattedPrayerTime = DateFormat('hh:mm').format(parsedPrayerTime);
+        return '${prayerName[i]} : ${convertToBanglaNumber(formattedPrayerTime)} মি.';
       }
     }
 
@@ -140,12 +175,22 @@ class _HomeScreenState extends State<HomeScreen> {
                 Stack(
                   children: [
                     Positioned(
-                      top: 80,
+                      top: 55,
                       left: 40,
                       right: 40,
                       child: Column(
                         children: [
-                          Text('আজকের তারিখ: ${convertToBanglaNumber(formattedDate)}',
+                          Text('আজকের তারিখ',
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.w600,
+                                fontSize: 16 / MediaQuery.of(context).textScaleFactor),),
+                          Text(formattedDate_ar,
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.w600,
+                                fontSize: 16 / MediaQuery.of(context).textScaleFactor),),
+                          Text('${convertToBanglaNumber(formattedDate)}',
                             style: TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.w600,
