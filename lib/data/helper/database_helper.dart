@@ -9,6 +9,7 @@ import 'package:sqflite/sqflite.dart';
 
 import '../model/books_model.dart';
 import '../model/chapter_model.dart';
+import '../model/dua_category_model.dart';
 import '../model/hadith_model.dart';
 import '../model/section_model.dart';
 
@@ -69,6 +70,10 @@ class DatabaseHelper {
 
     var duaTableExists = await db.rawQuery(
       "SELECT name FROM sqlite_master WHERE type='table' AND name='dua'",
+    );
+
+    var duaCategoryTableExists = await db.rawQuery(
+      "SELECT name FROM sqlite_master WHERE type='table' AND name='dua_category'",
     );
 
     var biographyTableExists = await db.rawQuery(
@@ -167,6 +172,15 @@ class DatabaseHelper {
       )
     ''');
     }
+    if (duaCategoryTableExists.isEmpty) {
+      await db.execute('''
+      CREATE TABLE dua_category (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        name TEXT
+      )
+    ''');
+    }
+
 
     if (biographyTableExists.isEmpty) {
       await db.execute('''
@@ -249,6 +263,16 @@ class DatabaseHelper {
 
     return List.generate(maps.length, (i) {
       return DuaDataModel.fromMap(maps[i]);
+    });
+  }
+
+  ///getting dua category
+  Future<List<DuaCategoryModel>> getDuaCategoryData() async {
+    final db = await instance.database;
+    final List<Map<String, dynamic>> maps = await db.query('dua_category');
+
+    return List.generate(maps.length, (i) {
+      return DuaCategoryModel.fromMap(maps[i]);
     });
   }
 

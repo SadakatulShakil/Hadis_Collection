@@ -1,41 +1,59 @@
+import 'package:al_hadith/data/model/dua_category_model.dart';
 import 'package:al_hadith/data/model/dua_model.dart';
 import 'package:flutter/material.dart';
-
+import '../../../data/helper/database_helper.dart';
 import '../../../utill/color_resources.dart';
 import 'dua_details_view.dart';
 
-class DuaListView extends StatelessWidget {
-  DuaDataModel duaDataList;
-  DuaListView(this.duaDataList);
-
+class DuaListView extends StatefulWidget {
+  DuaCategoryModel duaCategoryList;
+  DuaListView(this.duaCategoryList);
 
   @override
-  Widget build(BuildContext context) {
+  _DuaListViewState createState() => _DuaListViewState();
+}
 
-    return InkWell(
-      onTap: (){
-        Navigator.of(context).push(MaterialPageRoute(
-            builder: (context)=> DuaDetailsView(duaDataList)
-        ));
-      },
-      child: Card(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(15.0),
-        ),
-        color: primaryColor.withOpacity(0),
-        child: ListTile(
-          leading: Container(
-            width: 45,
-            height: 45,
-            decoration: BoxDecoration(
-                color: primaryColor.withOpacity(0),
-                borderRadius: BorderRadius.circular(20)),
-            child: Align(
-                alignment: Alignment.center,
-                child: Image.asset('assets/images/book_icon6.png', width: 40,height: 45,)),
+class _DuaListViewState extends State<DuaListView> {
+  List<DuaDataModel> _duaDataList = [];
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _loadDuaData();
+  }
+
+  Future<void> _loadDuaData() async {
+    final dua = await DatabaseHelper.instance.getAllDuaData();
+    setState(() {
+      _duaDataList = dua.where((element) => element.category_id == widget.duaCategoryList.id).toList();
+      print("chapter_data_length: " + _duaDataList.length.toString());
+      print("chapter_data: " + dua.toString());
+    });
+  }
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: primaryColor,
+      appBar: AppBar(
+        backgroundColor: primaryColor,
+        elevation: 0,
+        title: Align(
+            alignment: Alignment.centerLeft,
+            child: Text('দোয়া সমূহ',style: TextStyle(fontWeight: FontWeight.w400, fontSize: 24 / MediaQuery.textScaleFactorOf(context)))),
+      ),
+      body:Column(
+        children: [
+          SizedBox(height: 8,),
+          Expanded(
+            child: ListView.builder(
+              itemCount: _duaDataList.length,
+              padding: const EdgeInsets.symmetric(horizontal: 8),
+              itemBuilder: (context, index) {
+                return DuaDetailsView(_duaDataList[index]);
+              },
+            ),
           ),
-          title: Text(duaDataList.name, style: TextStyle(color: Colors.white, fontSize: 18 / MediaQuery.textScaleFactorOf(context)),),
-        ),
+        ],
       ),
     );
   }

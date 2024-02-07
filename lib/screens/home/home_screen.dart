@@ -125,7 +125,7 @@ class _HomeScreenState extends State<HomeScreen> {
       child: Scaffold(
           backgroundColor: primaryColor,
           appBar: AppBar(
-            title: Text('ঈমান ও সুন্নাহ', style: TextStyle(fontSize: 24 / MediaQuery.textScaleFactorOf(context)),),
+            title: Text('ঈমান বৃক্ষ', style: TextStyle(fontSize: 24 / MediaQuery.textScaleFactorOf(context)),),
             centerTitle: true,
             backgroundColor: primaryColor,
             elevation: 0,
